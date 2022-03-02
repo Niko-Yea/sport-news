@@ -1,4 +1,3 @@
-// import React, { useEffect } from "react";
 import Pagination from "react-bootstrap/Pagination";
 
 import styles from "./styles.module.scss";
@@ -29,12 +28,6 @@ export default function PagePagination({
   const onNextPageClick = () => {
     changePage((currentPage) => currentPage + 1);
   };
-
-  // const setLastPageAsCurrent = () => {
-  //   if (currentPage > pagesCount) {
-  //     setCurrentPage(pagesCount);
-  //   }
-  // };
 
   let isPageNumberOutOfRange;
 
@@ -70,8 +63,6 @@ export default function PagePagination({
 
     return null;
   });
-
-  // useEffect(setLastPageAsCurrent, [pagesCount]);
 
   return (
     <Pagination className={styles.pagination}>
