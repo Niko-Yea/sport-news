@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import PostsPageView from "./views/postPageView/PostsPageView";
+import OnePostView from "./views/onePostView/OnePostView";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import JsonPlaceholderApi from "./service/json-placeholder-api";
+
+import "normalize.css";
+
+import { Routes, Route } from "react-router-dom";
+import NavBar from "./components/navBar/NavBar";
+import { Container } from "react-bootstrap";
+
+const apiService = new JsonPlaceholderApi();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <NavBar />
+      <Container>
+        <Routes>
+          <Route path="/" element={<PostsPageView apiService={apiService} />} />
+          <Route
+            path="/post/:postId"
+            element={<OnePostView apiService={apiService} />}
+          />
+        </Routes>
+      </Container>
+    </>
   );
 }
 
